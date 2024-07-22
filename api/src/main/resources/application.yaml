@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: api
+  datasource:
+    url: jdbc:postgresql://db:5432/hotel
+    #url: jdbc:postgresql://localhost:5432/hotel #postgres local
+    username: hotel
+    password: hotel
+  jpa:
+    hibernate:
+      ddl-auto: update 
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect         
+server:
+  servlet:
+    contextPath: /api
+    
