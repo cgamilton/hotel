@@ -40,5 +40,9 @@ public class ReservaController {
 	@PutMapping("/{idReserva}/checkout")
 	public ReservaDTO checkout(@PathVariable Long idReserva) {
 		return reservaService.checkout(idReserva);
+	
+	@GetMapping("/{statusReserva}/status")
+	public List<ReservaDTO> listarPorStatus(@PathVariable String statusReserva){
+		return reservaService.listarPorStatus(statusReserva);
 	}
 }

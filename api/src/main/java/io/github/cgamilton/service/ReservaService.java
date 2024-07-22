@@ -30,7 +30,7 @@ public class ReservaService {
 
 	public static final double PERCENTUAL_ACRESCIMO = 0.5;
 
-	private Map<TipoDiaria, Diaria> mapDiarias;
+	private Map<TipoDiaria, Diaria> mapDiarias = null;
 
 	@Autowired
 	ReservaRepository reservaRepository;
@@ -130,5 +130,11 @@ public class ReservaService {
 
 	void setMapDiarias(Map<TipoDiaria, Diaria> mapDiarias) {
 		this.mapDiarias = mapDiarias;
+	}
+	
+	public List<ReservaDTO> listarPorStatus(String statusReserva){
+		var statusReservaEnum = StatusReserva.valueOf(statusReserva);
+		var entities = reservaRepository.findReservaPorStatu(statusReservaEnum);
+		return reservaAdapter.toDTO(entities);
 	}
 }

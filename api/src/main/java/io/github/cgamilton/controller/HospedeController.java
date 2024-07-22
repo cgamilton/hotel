@@ -1,7 +1,6 @@
 package io.github.cgamilton.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +18,10 @@ public class HospedeController {
 	HospedeService hospedeService;
 
 	@PostMapping("/novo")
-	public void novoHospede(@Valid @RequestBody HospedeDTO hospedeDTO) {
-		hospedeService.novoHospede(hospedeDTO);
+	public HospedeDTO novoHospede(@Valid @RequestBody HospedeDTO hospedeDTO) {
+		return hospedeService.novoHospede(hospedeDTO);
 	}
-	@GetMapping("/retornaHospede")
+	@PostMapping("/retornaHospede")
 	public HospedeDTO retornaHospede(@RequestBody HospedeDTO hospedeDTO) {
 		return hospedeService.retornaHospede(hospedeDTO);
 	}

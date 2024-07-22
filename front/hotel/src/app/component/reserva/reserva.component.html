@@ -1,0 +1,42 @@
+<mat-form-field appearance="fill">
+    <mat-label>Código Hospede</mat-label>
+    <input matInput [(ngModel)]="reserva.idHospede" placeholder="Digite o código do hospede">
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Data Check-in</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="reserva.dataCheckin" placeholder="Selecione a data de check-in">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <div>
+    <label>
+      <input type="checkbox" [(ngModel)]="reserva.taxaGaragem">
+      Taxa de Garagem
+    </label>
+  </div>
+  <div>
+    <button mat-raised-button color="accent" (click)="salvar()">Salvar</button>
+  </div>
+  
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  
+  <div *ngIf="!errorMessage && reservaList.length > 0">
+    <table mat-table [dataSource]="reservaList" class="mat-elevation-z8">
+      <ng-container matColumnDef="idHospede">
+        <th mat-header-cell *matHeaderCellDef>Código Hospede</th>
+        <td mat-cell *matCellDef="let reserva">{{ reserva.idHospede }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="dataCheckin">
+        <th mat-header-cell *matHeaderCellDef>Data Check-in</th>
+        <td mat-cell *matCellDef="let reserva">{{ reserva.dataCheckin }}</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  

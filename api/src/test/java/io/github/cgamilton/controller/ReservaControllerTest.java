@@ -77,7 +77,7 @@ class ReservaControllerTest {
 	@Test
 	@Order(2)
 	public void testHospedeNotFound() throws JsonProcessingException, Exception {
-		mockMvc.perform(get("/hospede/retornaHospede").contentType(MediaType.APPLICATION_JSON)
+		mockMvc.perform(post("/hospede/retornaHospede").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(new HospedeDTO()))).andExpect(status().isNotFound());
 	}
 

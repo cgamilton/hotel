@@ -17,9 +17,10 @@ public class HospedeService {
 	@Autowired
 	HospedeAdapter hospedeAdapter;
 
-	public void novoHospede(HospedeDTO hospedeDTO) {
+	public HospedeDTO novoHospede(HospedeDTO hospedeDTO) {
 		var entity = hospedeAdapter.toEntity(hospedeDTO);
 		hospedeRepository.save(entity);
+		return hospedeAdapter.toDTO(entity);
 	}
 
 	public HospedeDTO retornaHospede(HospedeDTO hospedeDTO) {

@@ -1,0 +1,50 @@
+<div>
+  <a mat-raised-button color="primary" routerLink="/criarreserva">Criar Reserva</a>
+</div>
+<div *ngIf="!error">
+  <table mat-table [dataSource]="reservas" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let reserva">{{ reserva.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="statusReserva">
+      <th mat-header-cell *matHeaderCellDef>Status Reserva</th>
+      <td mat-cell *matCellDef="let reserva">{{ reserva.statusReserva }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dataCheckin">
+      <th mat-header-cell *matHeaderCellDef>Data Check-in</th>
+      <td mat-cell *matCellDef="let reserva">{{ reserva.dataCheckin }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dataCheckout">
+      <th mat-header-cell *matHeaderCellDef>Data Check-out</th>
+      <td mat-cell *matCellDef="let reserva">{{ reserva.dataCheckout }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="taxaGaragem">
+      <th mat-header-cell *matHeaderCellDef>Taxa Garagem</th>
+      <td mat-cell *matCellDef="let reserva">{{ reserva.taxaGaragem }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorTotal">
+      <th mat-header-cell *matHeaderCellDef>Valor Total</th>
+      <td mat-cell *matCellDef="let reserva">{{ reserva.valorTotal }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorFinalCobrado">
+      <th mat-header-cell *matHeaderCellDef>Valor Final Cobrado</th>
+      <td mat-cell *matCellDef="let reserva">{{ reserva.valorFinalCobrado }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="valorAcrescimoCheckout">
+      <th mat-header-cell *matHeaderCellDef>Valor Acréscimo Checkout</th>
+      <td mat-cell *matCellDef="let reserva">{{ reserva.valorAcrescimoCheckout }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<div *ngIf="error" class="error">{{ error }}</div>

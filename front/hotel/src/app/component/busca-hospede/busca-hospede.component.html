@@ -1,0 +1,68 @@
+<!-- src/app/busca-hospede/busca-hospede.component.html -->
+<mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="hospede.nome" placeholder="Digite o nome">
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Telefone</mat-label>
+    <input matInput [(ngModel)]="hospede.telefone" placeholder="Digite o telefone">
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Documento</mat-label>
+    <input matInput [(ngModel)]="hospede.documento" placeholder="Digite o documento">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Reserva</mat-label>
+    <input matInput [(ngModel)]="hospede.idReserva" placeholder="Número reserva para checkout">
+  </mat-form-field>
+  
+  <div>
+    <button mat-raised-button color="primary" (click)="buscar()">Buscar</button>
+    <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+    <button mat-raised-button color="primary" (click)="checkin()">CHECK-IN</button>
+    <button mat-raised-button color="primary" (click)="checkout()">CHECK-OUT</button>
+  </div>
+  
+  <!-- Exibir mensagem de erro se houver -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  
+  <!-- Exibir tabela de Hospede -->
+  <div *ngIf="!errorMessage && hospedeList.length > 0">
+    <table mat-table [dataSource]="hospedeList" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let hospede">{{ hospede.id }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let hospede">{{ hospede.nome }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="telefone">
+        <th mat-header-cell *matHeaderCellDef>Telefone</th>
+        <td mat-cell *matCellDef="let hospede">{{ hospede.telefone }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="documento">
+        <th mat-header-cell *matHeaderCellDef>Documento</th>
+        <td mat-cell *matCellDef="let hospede">{{ hospede.documento }}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let hospede">
+          <button mat-raised-button color="primary" (click)="criarReserva(hospede.id)">
+            Criar Reserva
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  
