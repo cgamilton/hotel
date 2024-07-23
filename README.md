@@ -4,7 +4,7 @@ Docker (windows: https://docs.docker.com/desktop/install/windows-install/)
 JDK 17
 Maven
 
-Após baixar, rodar os comandos na raíz do projeto:
+Após baixar, rodar os comandos na raíz do projeto (/api):
 ```
 mvn clean install
 cp target/api-0.0.1-SNAPSHOT.jar src/main/docker
@@ -13,10 +13,10 @@ docker-compose up
 ```
 Requisitos para rodar o app angular:
 - A ideia inicial era subir no nginx utilizando o docker-compose, mas ocorreram problemas.
-
 Node/npm
 Angular
-Executar os comandos na raiz do projeto:
+Executar os comandos na raiz do projeto (/front/hotel):
+```
 npm install
 ng serve
-
+```
