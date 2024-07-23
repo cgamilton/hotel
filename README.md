@@ -12,9 +12,10 @@ cd .\src\main\docker\
 docker-compose up
 ```
 Requisitos para rodar o app angular:
-- A ideia inicial era subir no nginx utilizando o docker-compose, mas ocorreram problemas.
-Node/npm
-Angular
+
+A ideia inicial era subir no nginx utilizando o docker-compose, mas ocorreram problemas.
+- Node/npm
+- Angular
 Executar os comandos na raiz do projeto (/front/hotel):
 ```
 npm install
